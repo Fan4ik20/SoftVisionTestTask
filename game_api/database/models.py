@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, validates
+from sqlalchemy.orm import declarative_base, validates, relationship
 
 
 GameBase = declarative_base()
@@ -14,6 +14,7 @@ class User(GameBase):
     age = Column(Integer)
 
     game_id = Column(Integer, ForeignKey('games.id'))
+    game = relationship('Game', back_populates='users')
 
     @validates('age')
     def validate_age(self, _, value: int):
@@ -27,3 +28,5 @@ class Game(GameBase):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False, unique=True)
+
+    users = relationship('User', back_populates='game')

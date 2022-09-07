@@ -21,7 +21,7 @@ class UserInterface(InterfaceBase):
         return db_user
 
     @staticmethod
-    def get(db: Session, user_id: int) -> User:
+    def get(db: Session, user_id: int) -> User | None:
         return db.get(User, user_id)
 
     @staticmethod
