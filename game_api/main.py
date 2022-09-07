@@ -64,7 +64,7 @@ def create_app() -> FastAPI:
 
 @AuthJWT.load_config
 def get_secure_config():
-    return SecuritySettings(_env_file='.env')
+    return SecuritySettings()
 
 
 game_api = create_app()

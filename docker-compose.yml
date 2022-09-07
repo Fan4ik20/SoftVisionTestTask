@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  database:
+    hostname: "game_api_db"
+    container_name: "game_api_db"
+    image: "postgres:14-alpine"
+
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=game_api
+  api:
+    container_name: game_api
+    ports:
+      - "65432:65432"
+    build:
+      context: ./game_api
+      dockerfile: Dockerfile
+    environment:
+      - SECRET_KEY=YourSecretKey
+      - DB_URL=postgresql://postgres:postgres@game_api_db/game_api
+
+    depends_on:
+      - database
