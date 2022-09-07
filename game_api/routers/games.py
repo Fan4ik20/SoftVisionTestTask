@@ -76,6 +76,9 @@ def connect_to_game(
     if active_user in game.users:
         raise exc.CantPerformThis("You can't connect to game again")
 
+    if active_user.game:
+        raise exc.CantPerformThis("You cannot join another game")
+
     GameInterface.add_user(db, game, active_user)
 
     return {'status': 'OK'}
