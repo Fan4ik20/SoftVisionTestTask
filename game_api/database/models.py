@@ -16,9 +16,10 @@ class User(GameBase):
     game_id = Column(Integer, ForeignKey('games.id'))
 
     @validates('age')
-    def validate_age(self, age: int):
-        if not 1 <= age <= 100:
+    def validate_age(self, _, value: int):
+        if not 1 <= value <= 100:
             raise ValueError('Age must be in the range of 1 to 100')
+        return value
 
 
 class Game(GameBase):

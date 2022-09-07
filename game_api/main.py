@@ -49,6 +49,7 @@ def create_app() -> FastAPI:
 
     include_db(app, db_config)
     include_router(app)
+    include_handlers(app)
 
     return app
 
