@@ -40,6 +40,12 @@ def include_handlers(app: FastAPI) -> None:
     app.add_exception_handler(
         exc.NotValidLoginData, handlers.not_valid_login_data_handler
     )
+    app.add_exception_handler(
+        exc.ObjectNotExist, handlers.object_not_exist_handler
+    )
+    app.add_exception_handler(
+        exc.CantPerformThis, handlers.cant_perform_this_handler
+    )
 
 
 def create_app() -> FastAPI:
