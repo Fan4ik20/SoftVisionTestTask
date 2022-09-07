@@ -8,8 +8,8 @@ from database.interfaces.db_service import DbInterface
 
 from config import DatabaseSettings, SecuritySettings
 
-from dependencies.stubs import GameDb
-from dependencies.service import get_db_session
+from dependencies.stubs import GameDb, ActiveUser
+from dependencies.service import get_db_session, get_current_user
 
 from exceptions import exc, handlers
 
@@ -50,6 +50,8 @@ def create_app() -> FastAPI:
     include_db(app, db_config)
     include_router(app)
     include_handlers(app)
+
+    app.dependency_overrides[ActiveUser] = get_current_user
 
     return app
 
