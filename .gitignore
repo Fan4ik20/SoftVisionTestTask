@@ -1,0 +1,12 @@
+# Virtual environment
+venv
+
+# JetBrains
+.idea
+
+## Python
+__pycache__
+
+## Env files
+
+.env
