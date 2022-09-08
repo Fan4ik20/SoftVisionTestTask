@@ -17,7 +17,7 @@ Solution of a test task for the SoftVision
     - DB_URL
     - SECRET_KEY
 ## Running
-- ### Via docker
+- ### Via docker (app will be run on 65432 port)
   - Build images via command  
   `docker compose build`
   - Run containers in detach mode  
